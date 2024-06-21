@@ -11,7 +11,7 @@ export const Banner = () => {
   const [text, setText] = useState('');
   const [delta, setDelta] = useState(300 - Math.random() * 100);
   const [index, setIndex] = useState(1);
-  const toRotate = [ "Web Developer", "Web Designer", "UI/UX Designer" ];
+  const toRotate = [ "Full-stack Developer (Laravel)", "Full-stack Developer (Wordpress)", "Apps Developer" ];
   const period = 2000;
 
   useEffect(() => {
@@ -55,11 +55,12 @@ export const Banner = () => {
             <TrackVisibility>
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-              
+                <h1>Hi! I'm </h1>
                 <span className="tagline">ELKYOUD Mohammed</span>
-                <h1>{`Hi! I'm Judy`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Web Developer", "Web Designer", "UI/UX Designer" ]'><span className="wrap">{text}</span></span></h1>
+                <h2> <span className="txt-rotate" dataPeriod="2000" data-rotate='["Full-stack Developer (Laravel)","Full-stack Developer (Wordpress)", "Apps Developer" ]'><span className="wrap">{text}</span></span></h2>
                   <p>I am a developer passionate about technical challenges, involved in innovative projects, endowed with a collaborative spirit, and possessing a great capacity for adaptation. With solid experience in Agile Scrum, and frameworks like Laravel, Spring, and ReactJS, I have acquired expertise in designing robust software architectures and creating high-performing solutions</p>
-                  <button onClick={() => console.log('connect')}>Let’s Connect <ArrowRightCircle size={25} /></button>
+                  <button onClick={() => console.log('connect')}>Let's Work Together <ArrowRightCircle size={25} /></button>
+                  
               </div>}
             </TrackVisibility>
           </Col>
