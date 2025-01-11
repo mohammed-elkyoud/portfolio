@@ -50,10 +50,11 @@ export const Banner = () => {
                   <h1>Hi! I'm </h1>
                   <span className="tagline">ELKYOUD Mohammed</span>
                   <h2>
-                    <span className="txt-rotate" dataPeriod="2000" data-rotate='["Full-stack Developer (Laravel)","Full-stack Developer (Wordpress)", "Apps Developer"]'>
-                      <span className="wrap">{text}</span>
-                    </span>
-                  </h2>
+  <span className="txt-rotate" data-rotate='["Full-stack Developer (Laravel)", "Full-stack Developer (WordPress)", "Apps Developer"]' data-period="2000">
+    <span className="wrap" />
+  </span>
+</h2>
+
                   <p>
                     I am a developer passionate about technical challenges, involved in innovative projects, endowed with a collaborative spirit, and possessing a great capacity for adaptation. With solid experience in Agile Scrum, and frameworks like Laravel, Spring, and ReactJS, I have acquired expertise in designing robust software architectures and creating high-performing solutions
                   </p>
