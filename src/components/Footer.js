@@ -27,7 +27,7 @@ export const Footer = () => {
           </Col>
           <Col size={12} sm={4} className="text-center text-sm-end">
             
-            <p><a  href="#">ELKYOUD Mohammed</a>. All Rights Reserved</p>
+            <p><a  href="#">Elkyoud Mohammed</a>. All Rights Reserved</p>
           </Col>
         </Row>
       </Container>
