@@ -3,6 +3,7 @@ import App from './App';
 
 test('renders learn react link', () => {
   render(<App />);
-  const linkElement = screen.getByText(/Let's Work Together/i); // Adjusted to match actual content
-  expect(linkElement).toBeInTheDocument();
+  const linkElements = screen.getAllByText(/Let's Work Together/i); // Use getAllByText to find all instances
+  expect(linkElements.length).toBeGreaterThan(0); // Check that at least one exists
 });
+
