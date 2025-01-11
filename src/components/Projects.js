@@ -100,19 +100,19 @@ export const Projects = () => {
                               <h5>License in Distributed IT Systems</h5>
                               <hr className="text-green my-2" />
                               <p className="text-green mb-1">2023 - 2024</p>
-                              <h7 className="mb-0">SIR (FST Marrakech)</h7>
+                              <h4 className="mb-0">SIR (FST Marrakech)</h4>
                             </div>
                             <div className="col-sm-6">
                               <h5>University Degree in Science and Technology</h5>
                               <hr className="text-green my-2" />
                               <p className="text-green mb-1">2020 - 2023</p>
-                              <h7 className="mb-0">DEUST MIPC (FST Marrakech)</h7>
+                              <h4 className="mb-0">DEUST MIPC (FST Marrakech)</h4>
                             </div>
                             <div className="col-sm-6">
                               <h5>Baccalaureate</h5>
                               <hr className="text-green my-2" />
                               <p className="text-green mb-1">2019 - 2020</p>
-                              <h7 className="mb-0">PC: Physics and Chemistry</h7>
+                              <h4 className="mb-0">PC: Physics and Chemistry</h4>
                             </div>
                           </div>
                         </div>
