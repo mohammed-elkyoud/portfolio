@@ -30,11 +30,15 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Build and Push Docker Image
+      - name: Build and Push Docker Image with Tag Latest
         uses: mr-smithers-excellent/docker-build-push@v4
         with:
-          image: elkyoud/demo-app
+          image: elkyoud/demo-app:latest
           registry: docker.io
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          dockerfile: ./Dockerfile  # Specify the path to the Dockerfile if not in the root
+          dockerfile: ./Dockerfile
+
+      - name: Deploy to Render
+        run: |
+          curl -X GET "https://api.render.com/deploy/srv-cu1pnjd2ng1s73eeae2g?key=_r3VAWuQKaE"
