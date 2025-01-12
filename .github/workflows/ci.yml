@@ -30,15 +30,22 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Build and Push Docker Image with Tag Latest
-        uses: mr-smithers-excellent/docker-build-push@v4
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
         with:
-          image: elkyoud/demo-app:latest
-          registry: docker.io
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          dockerfile: ./Dockerfile
 
-      - name: Deploy to Render
+      - name: Build and Push Docker Image
         run: |
-          curl -X GET "https://api.render.com/deploy/srv-cu1pnjd2ng1s73eeae2g?key=_r3VAWuQKaE"
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/elkyoud/demo-app:${{ github.sha }} .
+          docker tag ${{ secrets.DOCKER_USERNAME }}/elkyoud/demo-app:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/elkyoud/demo-app:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/elkyoud/demo-app:${{ github.sha }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/elkyoud/demo-app:latest
+
+  deploy:
+    needs: build-and-push-docker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Render Deployment for Latest Image
+        run: curl -X GET "https://api.render.com/deploy/srv-cu1pnjd2ng1s73eeae2g?key=_r3VAWuQKaE"
