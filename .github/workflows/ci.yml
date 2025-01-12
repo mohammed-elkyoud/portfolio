@@ -38,10 +38,10 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/elkyoud/demo-app:${{ github.sha }} .
-          docker tag ${{ secrets.DOCKER_USERNAME }}/elkyoud/demo-app:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/elkyoud/demo-app:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/elkyoud/demo-app:${{ github.sha }}
-          docker push ${{ secrets.DOCKER_USERNAME }}/elkyoud/demo-app:latest
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/demo-app:${{ github.sha }} .
+          docker tag ${{ secrets.DOCKER_USERNAME }}/demo-app:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/demo-app:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/demo-app:${{ github.sha }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/demo-app:latest
 
   deploy:
     needs: build-and-push-docker
