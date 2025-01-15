@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"; 
 import { Container, Row, Col } from "react-bootstrap";
 import logo from "../assets/img/LOGO.png";
 import 'animate.css';
@@ -8,15 +8,12 @@ export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [text, setText] = useState('');
-  const [delta, setDelta] = useState(50); // Vitesse de frappe initiale rapide
+  const [delta, setDelta] = useState(50);
   const toRotate = ["Full-stack Developer (Laravel)", "Full-stack Developer (Wordpress)", "Apps Developer"];
-  const period = 500; // Période de rotation rapide
+  const period = 500;
 
   useEffect(() => {
-    const ticker = setInterval(() => {
-      tick();
-    }, delta);
-
+    const ticker = setInterval(() => tick(), delta);
     return () => clearInterval(ticker);
   }, [text]);
 
@@ -24,42 +21,40 @@ export const Banner = () => {
     const i = loopNum % toRotate.length;
     const fullText = toRotate[i];
     const updatedText = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
-
     setText(updatedText);
 
     if (!isDeleting && updatedText === fullText) {
       setIsDeleting(true);
-      setDelta(period); // Pause après l'affichage complet
+      setDelta(period);
     } else if (isDeleting && updatedText === '') {
       setIsDeleting(false);
       setLoopNum(loopNum + 1);
-      setDelta(50); // Revenir à la vitesse de frappe initiale
+      setDelta(50);
     } else if (isDeleting) {
-      setDelta(30); // Vitesse de suppression rapide
+      setDelta(30);
     }
   };
 
   return (
-    <section className="banner" id="home">
+    <section className="banner" id="home" style={{ background: 'linear-gradient(to right, #1f4037, #99f2c8)', color: '#fff' }}>
       <Container>
         <Row className="align-items-center">
           <Col xs={12} md={6} xl={7}>
             <TrackVisibility>
               {({ isVisible }) =>
                 <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                  <h1>Hi! I'm </h1>
-                  <span className="tagline">ELKYOUD Mohammmed</span>
-                  <h2>
-  <span className="txt-rotate" data-rotate='["Full-stack Developer (Laravel)", "Full-stack Developer (WordPress)", "Apps Developer"]' data-period="2000">
-    <span className="wrap" />
-  </span>
-</h2>
-
-                  <p>
-                    I am a developer passionate about technical challenges, involved in innovative projects, endowed with a collaborative spirit, and possessing a great capacity for adaptation. With solid experience in Agile Scrum, and frameworks like Laravel, Spring, and ReactJS, I have acquired expertise in designing robust software architectures and creating high-performing solutions
+                  <h1 className="mb-4">Hi! I'm <span style={{ color: '#FFD700' }}>Mohammed ELKYOUD</span></h1>
+                  <h2 className="mb-4">
+                    <span className="txt-rotate" data-rotate='["Full-stack Developer (Laravel)", "Full-stack Developer (WordPress)", "Apps Developer"]'>
+                      {text}
+                    </span>
+                  </h2>
+                  <p className="mb-4">
+                    I am a developer passionate about technical challenges, involved in innovative projects, endowed with a collaborative spirit, and possessing a great capacity for adaptation. With solid experience in Agile Scrum, and frameworks like Laravel, Spring, and ReactJS, I have acquired expertise in designing robust software architectures and creating high-performing solutions.
                   </p>
-                  <div className="d-flex align-items-center pt-5">
-                    <a href="ELKYOUD_CV.pdf" className="btn btn-danger py-3 px-4 me-5" download>Download CV</a>
+                  <div className="d-flex align-items-center">
+                    <a href="ELKYOUD_CV.pdf" className="btn btn-light py-3 px-4 me-3" download>Download CV</a>
+                    <a href="#contact" className="btn btn-outline-light py-3 px-4">Contact Me</a>
                   </div>
                 </div>
               }
@@ -69,7 +64,7 @@ export const Banner = () => {
             <TrackVisibility>
               {({ isVisible }) =>
                 <div className={isVisible ? "animate__animated animate__zoomIn" : ""}>
-                  <img src={logo} alt="Header Img" />
+                  <img src={logo} alt="Header Img" style={{ maxWidth: '100%', filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))' }} />
                 </div>
               }
             </TrackVisibility>

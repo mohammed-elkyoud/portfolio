@@ -15,6 +15,35 @@
 	font-weight: 400;
 }
 
+
+
+/* Style pour la navbar transparente */
+.navbar {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.navbar.scrolled {
+  background-color: rgba(0, 0, 0, 0.406) !important; /* Légère opacité pour la navbar lorsque scrollée */
+  transition: background-color 0.5s ease-in-out;
+}
+
+.navbar-link {
+  color: rgba(255, 255, 255, 0.7) !important; /* Couleur du texte des liens */
+}
+
+.navbar-link:hover {
+  color: rgba(255, 255, 255, 1) !important; /* Couleur des liens au survol */
+}
+
+.navbar-text {
+  color: rgba(255, 255, 255, 0.7) !important; /* Couleur du texte dans la navbar */
+}
+
+.navbar-toggler-icon {
+  background-color: rgba(255, 255, 255, 0.7) !important; /* Couleur de l'icône du toggle */
+}
+
 /************ Default Css ************/
 * {
   margin: 0;
