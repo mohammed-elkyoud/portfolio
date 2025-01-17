@@ -70,7 +70,7 @@ export const Skills = () => {
                   }}
                 >
                 
-                  <h5 style={{ color: "rgb(255, 255, 255)" }}>PHP/Laravel</h5>
+                  <h5 style={{ color: "rgb(255, 255, 255)" }}>Express JS</h5>
                 </div>
                 <div
                   className="item"
@@ -109,7 +109,7 @@ export const Skills = () => {
                   }}
                 >
                   
-                  <h5 style={{ color: "rgb(255, 255, 255)" }}>Javascript</h5>
+                  <h5 style={{ color: "rgb(255, 255, 255)" }}>Laravel</h5>
                 </div>
                 <div
                   className="item"

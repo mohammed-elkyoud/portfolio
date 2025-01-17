@@ -45,6 +45,8 @@ export const Contact = () => {
 
   return (
     <section className="contact" id="connect" style={{ background: 'linear-gradient(to right, #1f4037, #99f2c8)', color: '#fff', padding: '50px 0' }}>
+      <br/>
+      <br/>
       <Container>
         <Row className="align-items-center">
           <Col size={12} md={6}>
@@ -136,6 +138,10 @@ export const Contact = () => {
           </Col>
         </Row>
       </Container>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
     </section>
   );
 };

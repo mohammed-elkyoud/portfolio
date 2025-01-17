@@ -44,7 +44,7 @@ export const ProjectCard = ({ title, description, imgUrl, url }) => {
           </h5>
           <p
             style={{
-              color: "#1f4037",
+              color: "rgb(255, 255, 255)",
               fontSize: "14px",
               lineHeight: "1.5",
               marginBottom: "15px",

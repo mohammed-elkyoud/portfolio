@@ -9,7 +9,7 @@ export const Banner = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [text, setText] = useState('');
   const [delta, setDelta] = useState(50);
-  const toRotate = ["Full-stack Developer (Laravel)", "Full-stack Developer (Wordpress)", "Apps Developer"];
+  const toRotate = ["Software Engineer", "Data Science"];
   const period = 500;
 
   useEffect(() => {
@@ -36,8 +36,14 @@ export const Banner = () => {
   };
 
   return (
-    <section className="banner" id="home" style={{ background: 'linear-gradient(to right, #1f4037, #99f2c8)', color: '#fff' }}>
+    <section  id="home" style={{ background: 'linear-gradient(to right, #1f4037, #99f2c8)', color: '#fff' }}>
       <Container>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        
         <Row className="align-items-center">
           <Col xs={12} md={6} xl={7}>
             <TrackVisibility>
@@ -45,12 +51,12 @@ export const Banner = () => {
                 <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                   <h1 className="mb-4">Hi! I'm <span style={{ color: '#FFD700' }}>Mohammed ELKYOUD</span></h1>
                   <h2 className="mb-4">
-                    <span className="txt-rotate" data-rotate='["Full-stack Developer (Laravel)", "Full-stack Developer (WordPress)", "Apps Developer"]'>
+                    <span className="txt-rotate" data-rotate='["Software Engineer", "Data Sceince"]'>
                       {text}
                     </span>
                   </h2>
-                  <p className="mb-4">
-                    I am a developer passionate about technical challenges, involved in innovative projects, endowed with a collaborative spirit, and possessing a great capacity for adaptation. With solid experience in Agile Scrum, and frameworks like Laravel, Spring, and ReactJS, I have acquired expertise in designing robust software architectures and creating high-performing solutions.
+                  <p className="mb-4" style={{ color: 'rgb(255, 255, 255)' }}>
+                  I am a developer passionate about technical challenges, involved in innovative projects, endowed with a collaborative spirit, and possessing a great capacity for adaptation. With solid experience in Agile Scrum, and frameworks like Laravel, ExpressJS, ReactJS and Spring Boot, I have acquired expertise in designing robust software architectures and creating high-performing solutions.
                   </p>
                   <div className="d-flex align-items-center">
                     <a href="ELKYOUD_CV.pdf" className="btn btn-light py-3 px-4 me-3" download>Download CV</a>
@@ -71,6 +77,9 @@ export const Banner = () => {
           </Col>
         </Row>
       </Container>
+      <br/>
+      <br/>
+      <br/>
     </section>
   );
 };
