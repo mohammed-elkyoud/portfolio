@@ -54,7 +54,7 @@ export const Banner = () => {
                   </p>
                   <div className="d-flex align-items-center">
                     <a href="ELKYOUD_CV.pdf" className="btn btn-light py-3 px-4 me-3" download>Download CV</a>
-                    <a href="#contact" className="btn btn-outline-light py-3 px-4">Contact Me</a>
+                    <a href="#connect" className="btn btn-outline-light py-3 px-4">Contact Me</a>
                   </div>
                 </div>
               }
