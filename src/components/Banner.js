@@ -59,9 +59,16 @@ export const Banner = () => {
                   I am a developer passionate about technical challenges, involved in innovative projects, endowed with a collaborative spirit, and possessing a great capacity for adaptation. With solid experience in Agile Scrum, and frameworks like Laravel, ExpressJS, ReactJS and Spring Boot, I have acquired expertise in designing robust software architectures and creating high-performing solutions.
                   </p>
                   <div className="d-flex align-items-center">
-                    <a href="ELKYOUD_CV.pdf" className="btn btn-light py-3 px-4 me-3" download>Download CV</a>
-                    <a href="#connect" className="btn btn-outline-light py-3 px-4">Contact Me</a>
-                  </div>
+  <a 
+    href="/Elkyoud Mohammed CV.pdf" 
+    className="btn btn-light py-3 px-4 me-3" 
+    download
+  >
+    Download CV
+  </a>
+  <a href="#connect" className="btn btn-outline-light py-3 px-4">Contact Me</a>
+</div>
+
                 </div>
               }
             </TrackVisibility>

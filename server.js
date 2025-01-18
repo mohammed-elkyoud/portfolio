@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const router = express.Router();
 const cors = require("cors");
@@ -15,8 +16,8 @@ console.log(process.env.EMAIL_PASS);
 const contactEmail = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: "mohammdkyoud@gmail.com",
-    pass: ""
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
   },
 });
 
@@ -36,7 +37,7 @@ router.post("/contact", (req, res) => {
   const subject = req.body.subject;
   const mail = {
     from: name,
-    to: "mohammdkyoud@gmail.com",
+    to: process.env.EMAIL_USER,
     subject: "Contact Form Submission - Portfolio",
     html: `<p>Name: ${name}</p>
            <p>Email: ${email}</p>
