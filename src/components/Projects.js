@@ -20,13 +20,14 @@ import TrackVisibility from "react-on-screen";
 export const Projects = () => {
   const projets = [
     {
-      title: "Application web de gestion des conférences et des cours",
+      title: "Web application for managing conferences and courses",
       description: "HTML5, CSS3, Laravel, MySQL,PHP, UML, Merise.",
       url: "",
       imgUrl: frontend,
     },
     {
-      title: "Application web de gestion des taxes TNB",
+      title: "Web application for TNB tax management",
+      description: "Angular, SpringBoot, MySQL, UML.",
       url: "",
       imgUrl: tnb,
     },
@@ -37,7 +38,7 @@ export const Projects = () => {
       imgUrl: bricoly,
     },
     {
-      title: "Development of a solution that enables users to design customized websites using templates or modular components",
+      title: "Development of a solution that enables users to design customized websites",
       description: "ReactJs, NodeJs, ExpressJs, HTML5, CSS3, Trello",
       url: "https://offresexclusives.org/",
       imgUrl: wordpress,
