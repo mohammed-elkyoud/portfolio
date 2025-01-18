@@ -1,55 +1,62 @@
-require('dotenv').config();
+require("dotenv").config();
 const express = require("express");
-const router = express.Router();
 const cors = require("cors");
 const nodemailer = require("nodemailer");
+const path = require("path");
 
-// server used to send send emails
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use("/", router);
-app.listen(process.env.PORT || 5000, () => console.log("Server Running"));
-console.log(process.env.EMAIL_USER);
-console.log(process.env.EMAIL_PASS);
 
+// Configuration de Nodemailer
 const contactEmail = nodemailer.createTransport({
-  service: 'gmail',
+  service: "gmail",
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
+    pass: process.env.EMAIL_PASS,
   },
 });
 
 contactEmail.verify((error) => {
   if (error) {
-    console.log(error);
+    console.log("Nodemailer error:", error);
   } else {
-    console.log("Ready to Send");
+    console.log("Ready to Send Emails");
   }
 });
 
-router.post("/contact", (req, res) => {
-  const name = req.body.firstName;
-  const email = req.body.email;
-  const message = req.body.message;
-  const phone = req.body.phone;
-  const subject = req.body.subject;
+// Route pour le formulaire de contact
+app.post("/contact", (req, res) => {
+  const { firstName, email, phone, subject, message } = req.body;
   const mail = {
-    from: name,
+    from: firstName,
     to: process.env.EMAIL_USER,
     subject: "Contact Form Submission - Portfolio",
-    html: `<p>Name: ${name}</p>
+    html: `<p>Name: ${firstName}</p>
            <p>Email: ${email}</p>
            <p>Phone: ${phone}</p>
            <p>Subject: ${subject}</p>
            <p>Message: ${message}</p>`,
   };
+
   contactEmail.sendMail(mail, (error) => {
     if (error) {
-      res.json(error);
+      console.log("Error sending email:", error);
+      res.status(500).json({ code: 500, status: "Error sending email" });
     } else {
-      res.json({ code: 200, status: "Message Sent" });
+      console.log("Email sent successfully");
+      res.status(200).json({ code: 200, status: "Message sent successfully" });
     }
   });
 });
+
+// Middleware pour servir le frontend (React)
+app.use(express.static(path.join(__dirname, "build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+
+// Démarrage du serveur
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -12,6 +12,7 @@ export const Contact = () => {
     subject: '',
     message: ''
   };
+
   const [formDetails, setFormDetails] = useState(formInitialDetails);
   const [buttonText, setButtonText] = useState('Send');
   const [status, setStatus] = useState({});
@@ -26,21 +27,28 @@ export const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setButtonText("Sending...");
-    let response = await fetch("/contact", {
+    
+    // Render utilise le même domaine pour le backend
+    let response = await fetch(`${window.location.origin}/contact`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
       },
       body: JSON.stringify(formDetails),
     });
+
     setButtonText("Send");
     let result = await response.json();
+
     setFormDetails(formInitialDetails);
+
     if (result.code === 200) {
-      setStatus({ success: true, message: 'Message sent successfully' });
+      setStatus({ success: true, message: "Message sent successfully!" });
     } else {
-      setStatus({ success: false, message: 'Something went wrong, please try again later.' });
+      setStatus({ success: false, message: "Something went wrong. Please try again." });
     }
+
+    // Réinitialise l'état après 5 secondes
     setTimeout(() => {
       setStatus({});
     }, 5000);
@@ -48,17 +56,15 @@ export const Contact = () => {
 
   return (
     <section className="contact" id="contact" style={{ background: 'linear-gradient(to right, #1f4037, #99f2c8)', color: '#fff', padding: '50px 0' }}>
-      <br/>
-      <br/>
       <Container>
         <Row className="align-items-center">
           <Col size={12} md={6}>
             <TrackVisibility>
               {({ isVisible }) =>
-                <img 
-                  className={isVisible ? "animate__animated animate__zoomIn" : ""} 
-                  src={contactImg} 
-                  alt="Contact Us" 
+                <img
+                  className={isVisible ? "animate__animated animate__zoomIn" : ""}
+                  src={contactImg}
+                  alt="Contact Us"
                   style={{ maxWidth: '100%', filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.2))' }}
                 />
               }
@@ -72,65 +78,51 @@ export const Contact = () => {
                   <form onSubmit={handleSubmit}>
                     <Row>
                       <Col size={12} sm={6} className="px-1 mb-3">
-                        <input 
-                          type="text" 
-                          value={formDetails.firstName} 
-                          placeholder="Your Name" 
-                          onChange={(e) => onFormUpdate('firstName', e.target.value)} 
-                          style={{ borderRadius: '5px', border: '1px solid #ccc', padding: '10px', width: '100%' }}
+                        <input
+                          type="text"
+                          value={formDetails.firstName}
+                          placeholder="Your Name"
+                          onChange={(e) => onFormUpdate('firstName', e.target.value)}
                         />
                       </Col>
                       <Col size={12} sm={6} className="px-1 mb-3">
-                        <input 
-                          type="email" 
-                          value={formDetails.email} 
-                          placeholder="Your Email" 
-                          onChange={(e) => onFormUpdate('email', e.target.value)} 
-                          style={{ borderRadius: '5px', border: '1px solid #ccc', padding: '10px', width: '100%' }}
+                        <input
+                          type="email"
+                          value={formDetails.email}
+                          placeholder="Your Email"
+                          onChange={(e) => onFormUpdate('email', e.target.value)}
                         />
                       </Col>
                       <Col size={12} sm={6} className="px-1 mb-3">
-                        <input 
-                          type="tel" 
-                          value={formDetails.phone} 
-                          placeholder="Your Phone" 
-                          onChange={(e) => onFormUpdate('phone', e.target.value)} 
-                          style={{ borderRadius: '5px', border: '1px solid #ccc', padding: '10px', width: '100%' }}
+                        <input
+                          type="tel"
+                          value={formDetails.phone}
+                          placeholder="Your Phone"
+                          onChange={(e) => onFormUpdate('phone', e.target.value)}
                         />
                       </Col>
                       <Col size={12} sm={6} className="px-1 mb-3">
-                        <input 
-                          type="text" 
-                          value={formDetails.subject} 
-                          placeholder="Subject" 
-                          onChange={(e) => onFormUpdate('subject', e.target.value)} 
-                          style={{ borderRadius: '5px', border: '1px solid #ccc', padding: '10px', width: '100%' }}
+                        <input
+                          type="text"
+                          value={formDetails.subject}
+                          placeholder="Subject"
+                          onChange={(e) => onFormUpdate('subject', e.target.value)}
                         />
                       </Col>
                       <Col size={12} className="px-1 mb-3">
-                        <textarea 
-                          rows="6" 
-                          value={formDetails.message} 
-                          placeholder="Message" 
-                          onChange={(e) => onFormUpdate('message', e.target.value)} 
-                          style={{ borderRadius: '5px', border: '1px solid #ccc', padding: '10px', width: '100%' }}
+                        <textarea
+                          rows="6"
+                          value={formDetails.message}
+                          placeholder="Message"
+                          onChange={(e) => onFormUpdate('message', e.target.value)}
                         />
                       </Col>
                       <Col size={12} className="px-1 mb-3">
-                        <button 
-                          type="submit" 
-                          style={{ background: '#FFD700', color: '#333', padding: '10px 20px', borderRadius: '5px', border: 'none', cursor: 'pointer', transition: 'all 0.3s' }}
-                          onMouseOver={(e) => e.target.style.background = '#ffae00'}
-                          onMouseOut={(e) => e.target.style.background = '#FFD700'}
-                        >
-                          {buttonText}
-                        </button>
+                        <button type="submit">{buttonText}</button>
                       </Col>
                       {status.message && (
                         <Col>
-                          <p className={status.success === false ? "danger" : "success"} style={{ color: status.success ? '#28a745' : '#dc3545' }}>
-                            {status.message}
-                          </p>
+                          <p className={status.success ? "success" : "danger"}>{status.message}</p>
                         </Col>
                       )}
                     </Row>
@@ -141,10 +133,6 @@ export const Contact = () => {
           </Col>
         </Row>
       </Container>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
     </section>
   );
 };
